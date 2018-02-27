@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="main/java"/>
+	<classpathentry excluding="dbServer/dbServer/" kind="src" path="test/java"/>
+	<classpathentry kind="src" path="test/java/dbServer/dbServer"/>
+	<classpathentry kind="lib" path="/home/sapient/Downloads/json-20160810.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
