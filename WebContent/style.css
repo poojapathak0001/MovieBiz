@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+#main {
+	background-image: url("cover_2.jpg");
+}
+
+.p-desc {
+	height : 250px;
+	overflow-y : scroll;
+}
+
+#marker1 {
+	display : inline;
+}
