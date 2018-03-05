@@ -12,12 +12,12 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
- <ul class="nav nav-tabs">
+ <ul class="nav nav-tabs sticky-top">
             <li class="nav-item">
               <a href="#home" class="nav-link active"  id="home-tab">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#mydiv" id="fav-tab" data-toggle="modal" data-target="#exampleModal">Favorites</a>
+              <a class="nav-link" href="#fav" id="fav-tab" data-toggle="modal" data-target="#exampleModal">Favorites</a>
               <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -36,13 +36,13 @@
   </div>
   
   <div id="marker1" class="container-fluid form-inline my-2 my-lg-0" >
-	  <input id="usertext" class="form-control ml-sm-5 mr-sm-2 col-sm-4" type="text" placeholder="Search">
-	  <button class="btn my-2 my-sm-0 btn-primary col-sm-1" onClick="getData()">Search</button>
-	  <script src="index.js" type="text/javascript"></script>
-	  <hr>
+    <input id="usertext" class="form-control ml-sm-5 mr-sm-2 col-sm-4" type="text" placeholder="Search">
+    <button class="btn my-2 my-sm-0 btn-primary col-sm-1" onClick="getData()">Search</button>
+    <script src="index.js" type="text/javascript"></script>
+    <hr>
   </div>
-	
-	<!-- Modal -->
+  
+  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -52,7 +52,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div id="mydiv" class="modal-body">
+      <div id="fav" class="modal-body">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -36,8 +36,8 @@ var count=0;
             		  htmlText	+= '<div class="row text-center">';
             	  }
             	  htmlText += '<div class="col-md-4 p-3">'
-    	              + '<div class="bg-primary card">'
-    	              + '<img class="img-fluid rounded-circle w-75 mx-auto mt-3" src="http://image.tmdb.org/t/p/w500' + data.results[i].poster_path + '" alt="movie">'
+    	              + '<div id="cards" class="bg-primary card">'
+    	              + '<img class="img-fluid rounded-circle w-50 h-25 mx-auto mt-3" src="http://image.tmdb.org/t/p/w500' + data.results[i].poster_path + '" alt="movie">'
     	              + '<div class="card-body">'
     	              + '<h4 class="card-title" id="i">'+ data.results[i].title + '</h4>'
     	              + '<div class="card-text">'
@@ -46,8 +46,8 @@ var count=0;
     	              + '<p class="p-desc"> Description: ' + data.results[i].overview + '</p>'
     	              + '</div>'
     	              + '<div class="card-footer">'
-    	              + '<input type="submit" id="addFavi'+i+'" class="btn btn-outline-dark m-2" value="Add to Favorite" onclick="addFav(this)" articleElement-obj="'+data.results[i].title+ '">'
-    	              + '<div id=check></div><br><input type="button" id="removeFavi'+i+'" class="btn disabled btn-outline-dark m-2" value="Remove Favorite" onclick="removeFav(this)" articleElement-obj="'+data.results[i].title+'">'
+    	              + '<input type="submit" id="addFavi'+i+'" class="btn btn-outline-dark" value="Add to Favorite" onclick="addFav(this)" articleElement-obj="'+data.results[i].title+ '">'
+    	              + '<div id=check></div><br><input type="button" id="removeFavi'+i+'" class="btn disabled btn-outline-dark" value="Remove Favorite" onclick="removeFav(this)" articleElement-obj="'+data.results[i].title+'">'
     	              + '</div>'
     	              + '</div>'
     	              + '</div>'
@@ -96,15 +96,51 @@ var count=0;
 				    			    	 
 				    	 //getting response of AJAX call and adding it to tag 'mydiv' in 'index.js'
 				    	 if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				    		 
-				    		 document.getElementById("mydiv").innerHTML = xmlhttp.responseText;
+				    		 var res = JSON.parse(xmlhttp.responseText);
 				    		 count++;
+				    		 
+				    		 
+				              var htmlText = '<div class="py-4">'
+									         +'<div class="container">'
+									  	     +'<div class="row">'
+									  	     +'<div class="col-12">'
+									  	     +'<h2>Favorite</h2>'
+									  	     +'<hr>';
+				              //looping through the response data
+				              for ( var i = 0; i < res.movie.length; i++ ) {
+				            	  //storing response for later use (to save and remove favorites)]
+				            	  
+				            		  htmlText	+= '<div class="row text-center">';
+				            	  
+				            	  htmlText += '<div class="col-md-12">'
+				    	              + '<div id="cards" class="bg-primary card">'
+				    	           
+				    	              + '<div class="card-body">'
+				    	              + '<h4 class="card-title" id="i">'+ res.movie[i].moviename + '</h4>'
+				    	              + '<div class="card-text">'
+				    	              + '<p class="p-rate"> Rating: ' + res.movie[i].vote_average + '</p>'
+				    	              + '<p class="p-desc"> Description: ' + res.movie[i].overview + '</p>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>';
+				    	         
+				    	        	htmlText += '</div>';
+				                   	htmlText += '<hr>';
+				    	          
+				              }
+				              htmlText += '</div></div></div></div>';
+				              
+				             //making new elements with movie info after 'titlemovie1' tag
+				             document.getElementById('fav').innerHTML=htmlText;
+				             
 				    	 }
 				    	 
 				     };//end of onreadystatuschange function
 				     //setting key-value pairs to be sent over AJAX call
 				     var params = "id="+data_arr[i].id+"&moviename=" +data_arr[i].title+ "&vote_average=" +data_arr[i].vote_average+ "&overview=" +data_arr[i].overview;
-				     var url ="http://localhost:8081/moviez/JsonRetrieve?" + params;
+				     var url ="http://localhost:8080/Moviez/JsonRetrieve?" + params;
 				     
 				     //making the AJAX call
 				     xmlhttp.open('GET', url, true);
@@ -130,14 +166,49 @@ var count=0;
 	    		 document.getElementById(idname).classList.add("disabled");
 				 //declaring variable to make AJAX call
 			     var xmlhttp = new XMLHttpRequest();
-			     alert(i);
+			     
 			     xmlhttp.onreadystatechange = function(){
 			      if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			       document.getElementById("mydiv").innerHTML = xmlhttp.responseText;
+			       var res = JSON.parse(xmlhttp.responseText);
+			       count--;
+			       
+		              var htmlText = '<div class="py-4">'
+							         +'<div class="container">'
+							  	     +'<div class="row">'
+							  	     +'<div class="col-12">'
+							  	     +'<h2>Favorite</h2>'
+							  	     +'<hr>';
+		              //looping through the response data
+		              for ( var i = 0; i < res.movie.length; i++ ) {
+		            	  //storing response for later use (to save and remove favorites)
+		            	 
+		            		  htmlText	+= '<div class="row text-center">';
+		            	  
+		            	  htmlText += '<div class="col-12">'
+				    	              + '<div id="cards" class="bg-primary card">'
+				    	              + '<div class="card-body">'
+				    	              + '<h4 class="card-title" id="i">'+ res.movie[i].moviename + '</h4>'
+				    	              + '<div class="card-text">'
+				    	              + '<p class="p-rate"> Rating: ' + res.movie[i].vote_average + '</p>'
+				    	              + '<p class="p-desc"> Description: ' + res.movie[i].overview + '</p>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>'
+				    	              + '</div>';
+		    	          
+		    	        	htmlText += '</div>';
+		                   	htmlText += '<hr>';
+		    	          
+		              }
+		              htmlText += '</div></div></div></div>';
+		              
+		             //making new elements with movie info after 'titlemovie1' tag
+		             document.getElementById('fav').insertAdjacentHTML('beforeend',htmlText);
 			      }
 			     };
 			     var params = "id=" +data_arr[i].id;
-			     xmlhttp.open('GET',"http://localhost:8081/moviez/RemoveMovie?"+params,true);
+			     xmlhttp.open('GET',"http://localhost:8080/Moviez/RemoveMovie?"+params,true);
 			     xmlhttp.send();
 			 
 			 }

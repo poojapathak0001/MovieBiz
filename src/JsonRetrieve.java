@@ -40,7 +40,6 @@ public class JsonRetrieve extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("hi");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String movie = request.getParameter("moviename");
 		String vote = request.getParameter("vote_average");
@@ -49,10 +48,10 @@ public class JsonRetrieve extends HttpServlet {
 		JSONParser parse = new JSONParser();
 		JSONObject json = new JSONObject();
 		
-		json.put("overview", overview);
-		json.put("vote_average", vote);
-		json.put("moviename", movie);
 		json.put("id", id);
+		json.put("moviename", movie);
+		json.put("vote_average", vote);
+		json.put("overview", overview);
 		
 		jsonArray.add(json);
 		jsonData.put("movie",jsonArray);

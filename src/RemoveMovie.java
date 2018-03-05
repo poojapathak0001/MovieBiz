@@ -21,7 +21,6 @@ import org.json.simple.parser.JSONParser;
 @WebServlet("/RemoveMovie")
 public class RemoveMovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	JSONArray jarray = new JSONArray();
   
     public RemoveMovie() {
         super();
@@ -66,7 +65,8 @@ public class RemoveMovie extends HttpServlet {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		response.setContentType("application/json");
+		out.print(json);
 	}
 
 	/**
@@ -78,3 +78,4 @@ public class RemoveMovie extends HttpServlet {
 	}
 
 }
+
