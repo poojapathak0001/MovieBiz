@@ -24,7 +24,7 @@
             </li>
   </ul>
   
-  <div class="py-5 text-center section-fade-in-out" >
+  <div id=main class="py-5 text-center section-fade-in-out" >
     <div class="container py-5">
       <div class="row">
         <div class="col-md-12">
@@ -35,14 +35,14 @@
     </div>
   </div>
   
-  <div id="marker1" class="container-fluid form-inline my-2 my-lg-0" >
-    <input id="usertext" class="form-control ml-sm-5 mr-sm-2 col-sm-4" type="text" placeholder="Search">
-    <button class="btn my-2 my-sm-0 btn-primary col-sm-1" onClick="getData()">Search</button>
-    <script src="index.js" type="text/javascript"></script>
-    <hr>
+  <div id="marker1" class="container-fluid text-center form-inline pl-5 my-2 my-lg-0" >
+	  <input id="usertext" class="form-control ml-sm-5 mr-sm-2 col-sm-4" type="text" placeholder="Search">
+	  <button class="btn my-2 my-sm-0 btn-primary col-sm-1" onClick="getData()">Search</button>
+	  <script src="index.js" type="text/javascript"></script>
+	  <hr>
   </div>
-  
-  <!-- Modal -->
+	
+	<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

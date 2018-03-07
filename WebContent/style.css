@@ -1,4 +1,8 @@
 @charset "ISO-8859-1";
+* {
+	font-weight: bold;
+}
+
 #main {
 	background-image: url("./cover_2.jpg");
 }
@@ -14,4 +18,13 @@
 
 #cards {
 	height : 600px;
+}
+
+#cardsFav {
+	height : 600px;
+}
+
+.card {
+  color: black; 
+  font-weight: bold;
 }

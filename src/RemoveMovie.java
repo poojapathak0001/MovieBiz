@@ -1,7 +1,5 @@
 
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,10 +33,10 @@ public class RemoveMovie extends HttpServlet {
 		
 		//setting response type
 		response.setContentType("application/json");
-		int id = Integer.parseInt(request.getParameter("id"));
+		String id = request.getParameter("id");
 		PrintWriter out = response.getWriter(); 
 		//shows the city added
-		String fileName = "./fav.json";
+		String fileName = "./favoriteMovie.json";
 		JSONParser parser = new JSONParser();
 		try{
 			json =(JSONObject) parser.parse(new FileReader(fileName));
@@ -47,12 +45,14 @@ public class RemoveMovie extends HttpServlet {
 			// if id exists, do not add and return error
 			for(int i = 0; i < array.size() ; i++) {
 				movie = (JSONObject) array.get(i);
-				if(Integer.parseInt(String.valueOf(movie.get("id"))) == id) {
+				if(String.valueOf(movie.get("id")).equals(id)) {
+					System.out.println(movie.get("id") + id);
 					array.remove(i);
 					json.put("movie", array);
+					System.out.println(json.toString());
 					FileWriter jsonFile=null;
 					try {
-						jsonFile =  new FileWriter("./fav.json");
+						jsonFile =  new FileWriter("./favoriteMovie.json");
 						jsonFile.write(json.toString());
 						}catch(Exception e){
 							System.out.println("Please enter a valid path where you want to store your json");
@@ -78,4 +78,3 @@ public class RemoveMovie extends HttpServlet {
 	}
 
 }
-
